@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiveBet Bot — Telegram-бот аналитики live футбольных матчей</title>
+  <meta name="description" content="Аналитический сервис для любителей футбола и статистики. Бот анализирует ход live-матчей и в реальном времени считает вероятность гола в последние 25 минут.">
+  <meta name="keywords" content="футбольная аналитика, live анализ футбола, статистика футбольных матчей, прогноз голов, футбольный бот, анализ live матчей, телеграм бот футбол">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://livebetbot.ru/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LiveBet Bot — аналитика live футбола в Telegram">
+  <meta property="og:description" content="Аналитический сервис, который в реальном времени считает вероятность гола в последние 25 минут матча на основе большой базы статистики.">
+  <meta property="og:image" content="https://livebetbot.ru/logo.png">
+  <meta property="og:url" content="https://livebetbot.ru/">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "LiveBet Bot — доступ к аналитическому сервису",
+    "description": "Аналитический Telegram-бот для любителей футбольной статистики. Анализ хода live-матчей и расчёт вероятности гола в последние 25 минут.",
+    "image": "https://livebetbot.ru/logo.png",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "500",
+      "highPrice": "5000",
+      "priceCurrency": "RUB",
+      "offerCount": 2,
+      "url": "https://t.me/livebetfootball_bot",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Месячный доступ",
+          "price": "500",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Годовой доступ",
+          "price": "5000",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #04070b;
+      --bg-2: #0a0f17;
+      --bg-3: #111824;
+      --border: #1a2332;
+      --text: #e8ecf3;
+      --text-dim: #8b95a8;
+      --accent: #39ff14;
+      --accent-dim: #1fa30a;
+      --accent-glow: rgba(57, 255, 20, 0.15);
+      --red: #ff4d4d;
+      --gold: #ffd24c;
+    }
+    html, body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    body { overflow-x: hidden; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at top, rgba(57, 255, 20, 0.08), transparent 60%),
+        linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+      background-size: auto, 48px 48px, 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    main, header, footer { position: relative; z-index: 1; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-line { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; }
+    .logo-line img { width: 36px; height: 36px; border-radius: 50%; }
+    .logo-line span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--text-dim); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .btn-tg { background: var(--accent); color: #04070b; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: filter 0.15s; }
+    .btn-tg:hover { filter: brightness(1.1); text-decoration: none; }
+
+    .hero { padding: 80px 0 60px; text-align: center; }
+    .hero-logo { width: 220px; height: 220px; margin: 0 auto 32px; border-radius: 50%; box-shadow: 0 0 80px var(--accent-glow); }
+    .hero h1 { font-size: clamp(28px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.02em; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-sub { font-size: clamp(15px, 2vw, 19px); color: var(--text-dim); max-width: 660px; margin: 0 auto 36px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #04070b; padding: 16px 32px; border-radius: 10px; font-weight: 700; font-size: 17px; box-shadow: 0 0 40px var(--accent-glow); transition: transform 0.15s, box-shadow 0.15s; }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 60px var(--accent-glow); text-decoration: none; }
+    .hero-meta { margin-top: 20px; color: var(--text-dim); font-size: 14px; }
+    .hero-meta .mono { color: var(--accent); }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); margin: 60px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .stat { background: var(--bg-2); padding: 24px 20px; text-align: center; }
+    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+    .stat-label { color: var(--text-dim); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    section { padding: 80px 0; }
+    section h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+    section .lead { color: var(--text-dim); font-size: 17px; margin-bottom: 40px; max-width: 720px; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.2s, transform 0.2s; }
+    .feature:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+    .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-glow); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+    .feature h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .feature p { color: var(--text-dim); font-size: 15px; }
+
+    .signal-box { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 28px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.75; white-space: pre-wrap; overflow-x: auto; }
+    .signal-box .green { color: var(--accent); }
+    .signal-box .dim { color: var(--text-dim); }
+    .signal-box .bold { color: #fff; font-weight: 700; }
+    .signal-box .warn { color: var(--gold); }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; counter-reset: step; }
+    .step { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; position: relative; }
+    .step::before { counter-increment: step; content: counter(step); position: absolute; top: -14px; left: 24px; background: var(--accent); color: #04070b; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; font-family: 'JetBrains Mono', monospace; }
+    .step h4 { font-size: 17px; font-weight: 700; margin: 8px 0 10px; }
+    .step p { color: var(--text-dim); font-size: 14.5px; }
+
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 880px; margin: 0 auto; }
+    .price-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 18px; padding: 40px 32px; text-align: center; position: relative; transition: border-color 0.2s, transform 0.2s; }
+    .price-card:hover { border-color: var(--accent-dim); }
+    .price-card.featured { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border-color: var(--accent-dim); box-shadow: 0 0 80px var(--accent-glow); }
+    .price-badge { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 20px; text-transform: uppercase; }
+    .save-badge { position: absolute; top: -14px; right: 24px; background: var(--accent); color: #04070b; padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 800; letter-spacing: 0.03em; }
+    .price-num { font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .price-period { color: var(--text-dim); font-size: 16px; margin-top: 6px; margin-bottom: 24px; }
+    .price-per-month { color: var(--text-dim); font-size: 13px; margin-bottom: 24px; }
+    .price-per-month .mono { color: var(--text); font-weight: 600; }
+    .price-list { list-style: none; text-align: left; margin: 0 0 32px; padding: 0; }
+    .price-list li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; font-size: 15px; }
+    .price-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .price-list li:last-child { border-bottom: none; }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: #04070b; padding: 14px 24px; border-radius: 10px; font-weight: 700; font-size: 16px; transition: transform 0.15s, box-shadow 0.15s; width: 100%; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px var(--accent-glow); text-decoration: none; }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--accent); border: 1px solid var(--accent-dim); padding: 14px 24px; border-radius: 10px; font-weight: 700; font-size: 16px; transition: background 0.15s; width: 100%; }
+    .btn-outline:hover { background: var(--accent-glow); text-decoration: none; }
+
+    .faq { display: grid; gap: 12px; }
+    details { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; cursor: pointer; transition: border-color 0.2s; }
+    details:hover { border-color: var(--accent-dim); }
+    details[open] { border-color: var(--accent-dim); }
+    summary { font-weight: 600; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; color: var(--accent); font-size: 24px; font-weight: 400; transition: transform 0.2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details > p, details > div { color: var(--text-dim); margin-top: 14px; font-size: 15px; line-height: 1.7; }
+
+    .disclaimer { background: rgba(139, 149, 168, 0.06); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 40px 0; }
+    .disclaimer strong { color: var(--text); }
+    .disclaimer p { color: var(--text-dim); font-size: 14.5px; margin: 0; }
+
+    footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 56px 0 32px; margin-top: 60px; color: var(--text-dim); font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .footer-col h5 { color: var(--text); font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col li { padding: 4px 0; }
+    .footer-col a { color: var(--text-dim); }
+    .footer-col a:hover { color: var(--accent); text-decoration: none; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; font-size: 13px; }
+    .footer-bottom .req { color: var(--text-dim); margin-top: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding: 50px 0 40px; }
+      .hero-logo { width: 160px; height: 160px; }
+      section { padding: 50px 0; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .price-card { padding: 32px 24px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo-line">
+      <img src="logo.png" alt="LiveBet Bot logo">
+      <div>LiveBet <span>Bot</span></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#features">Возможности</a>
+      <a href="#how">Как работает</a>
+      <a href="#pricing">Доступ</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn-tg" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Открыть в Telegram</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero container">
+    <img class="hero-logo" src="logo.png" alt="LiveBet Bot">
+    <h1>Аналитика <span class="accent">live футбола</span><br>в реальном времени</h1>
+    <p class="hero-sub">Сервис для любителей футбола и спортивной статистики. Бот в реальном времени анализирует ход live-матчей и рассчитывает вероятность гола в последние 25 минут на основе большой исторической базы.</p>
+    <a class="hero-cta" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">
+      Открыть бота → @livebetfootball_bot
+    </a>
+    <p class="hero-meta">От <span class="mono">500 ₽ / 30 дней</span> · оплата через ЮKassa</p>
+  </section>
+
+  <section class="container" style="padding-top: 0;">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Анализ матчей</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3 мин</div>
+        <div class="stat-label">Частота обновления</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~100</div>
+        <div class="stat-label">Лиг в базе</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Параметров матча</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="container">
+    <h2>Что делает бот</h2>
+    <p class="lead">LiveBet Bot — это инструмент анализа для тех, кто следит за футболом, любит цифры и хочет видеть фактуру матча в одном месте. Не прогноз «инсайдера», не «гарантированный результат» — а структурированная аналитика на основе данных.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">⚙️</div>
+        <h3>Live-анализ матчей 24/7</h3>
+        <p>Бот непрерывно отслеживает все live футбольные матчи во всех покрываемых лигах. Каждые 3 минуты пересчитывает показатели и определяет матчи, в которых статистически вероятен гол в концовке.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Большая база статистики</h3>
+        <p>Анализ опирается на тысячи исторических матчей и десятки показателей: голевая статистика команд, ход текущего матча, форма последних игр, история противостояний, позиция в таблице.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h3>Вероятность гола</h3>
+        <p>Для каждого выбранного матча бот рассчитывает вероятность того, что гол будет забит в последние 25 минут. Цифра обновляется по мере накопления нашей базы наблюдений.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📈</div>
+        <h3>Ежедневная сводка</h3>
+        <p>Каждое утро — отчёт за вчера: какие уведомления приходили, по каким матчам прогноз подтвердился, по каким нет. Полная прозрачность результатов работы алгоритма.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Фактура матча</h3>
+        <p>В каждом уведомлении: текущий счёт, минута, удары, владение, угловые, сейвы, xG, форма обеих команд (последние 5 игр), позиция в таблице, история встреч.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>Только Telegram</h3>
+        <p>Никаких сложных дашбордов, регистраций, форм. Открыл бота, нажал /start — получаешь анализ. Заглушил бота в Telegram — не получаешь. Всё.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="container">
+    <h2>Как читать сигнал</h2>
+    <p class="lead">Когда бот находит матч с высокой вероятностью гола в концовке, в Telegram приходит структурированный сигнал с фактурой. Вот пример формата:</p>
+
+    <div class="signal-box"><span class="bold">Сигнал</span>
+🔴 LIVE | <span class="green">67'</span> | Италия. Серия B
+⚽ Палермо 1 - [0] <span class="bold">Катандзаро</span>
+
+📊 Тренды:
+  <span class="bold">Катандзаро</span>: ИТБ (0.5) = <span class="green">4/5</span> ✅
+  Палермо: ИТБ соперников (0.5) = <span class="green">4/5</span> ✅
+
+<span class="warn">⚠️ Катандзаро ещё не забила!</span>
+
+🎯 Прогноз:
+  ТБ матча: <span class="green">59%</span>
+  ИТБ Катандзаро: <span class="green">25%</span>
+
+📋 Форма (посл. 5 матчей):
+  <span class="bold">Катандзаро</span>: ✅ ❌ 🔶 ✅ ✅ — 7:4
+  Палермо: ✅ ✅ ❌ 🔶 ✅ — 8:5
+
+<span class="dim">Таблица (сезон):</span>
+  4. <span class="bold">Катандзаро</span> | 📋36 ✅16 🔶8 ❌12 | ⚽42:38 | ⭐56
+  6. Палермо | 📋36 ✅14 🔶10 ❌12 | ⚽45:41 | ⭐52
+
+  В <span class="green">43,2%</span> (16/37 матчей) минута последнего гола команды "Катандзаро" в матче &gt; 70
+  В <span class="green">39,5%</span> (15/38 матчей) минута последнего гола команды "Палермо" в матче &gt; 70</div>
+
+    <h3 style="margin: 48px 0 16px; font-size: 20px; font-weight: 700;">Принцип работы алгоритма</h3>
+    <p class="lead" style="margin-bottom: 28px;">Подробности математики мы не раскрываем — это наш накопленный опыт. Но базовая логика проста:</p>
+    <div class="steps">
+      <div class="step">
+        <h4>Сбор данных в реальном времени</h4>
+        <p>Бот получает данные о каждом live-матче: счёт, минута, ход игры, статистические показатели обеих команд.</p>
+      </div>
+      <div class="step">
+        <h4>Сопоставление с базой</h4>
+        <p>Текущая ситуация сравнивается с тысячами исторических матчей в нашей базе с похожими параметрами и известным итогом.</p>
+      </div>
+      <div class="step">
+        <h4>Расчёт вероятности</h4>
+        <p>На основе исторических исходов в аналогичных ситуациях алгоритм рассчитывает вероятность гола в оставшееся время.</p>
+      </div>
+      <div class="step">
+        <h4>Уведомление в Telegram</h4>
+        <p>Если вероятность достаточно высока — приходит уведомление с фактурой матча. Что с этим делать — решаете сами.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="container">
+    <h2 style="text-align: center;">Доступ к сервису</h2>
+    <p class="lead" style="text-align: center; margin-left: auto; margin-right: auto;">Два тарифа. Без скрытых платежей, без авто-продления — оплатил и пользуешься.</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="price-badge">Месяц</div>
+        <div class="price-num">500 ₽</div>
+        <div class="price-period">за 30 дней</div>
+        <div class="price-per-month">Стоимость в день: <span class="mono">~17 ₽</span></div>
+        <ul class="price-list">
+          <li>Все сигналы без лимитов</li>
+          <li>Полная фактура матча</li>
+          <li>Расчётная вероятность гола</li>
+          <li>Ежедневная сводка результатов</li>
+          <li>Оплата картой через ЮKassa</li>
+        </ul>
+        <a class="btn-outline" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Оплатить 500 ₽ →</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="save-badge">−17% выгоды</div>
+        <div class="price-badge">Год</div>
+        <div class="price-num">5 000 ₽</div>
+        <div class="price-period">за 12 месяцев</div>
+        <div class="price-per-month">Стоимость в день: <span class="mono">~14 ₽</span> · экономия <span class="mono">1 000 ₽</span></div>
+        <ul class="price-list">
+          <li>Всё из месячного тарифа</li>
+          <li>Доступ на весь сезон сразу</li>
+          <li>Без необходимости продлевать</li>
+          <li>Фиксация цены — даже если она вырастет</li>
+          <li>Приоритетная поддержка</li>
+        </ul>
+        <a class="btn-primary" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Оплатить 5 000 ₽ →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="disclaimer">
+      <p><strong>Информационно-аналитический сервис.</strong> LiveBet Bot предоставляет статистическую информацию и расчётные показатели по футбольным матчам в реальном времени. Сервис <strong>не является</strong> букмекером и <strong>не имеет отношения</strong> к организации азартных игр. Мы <strong>не даём рекомендаций</strong> по совершению ставок и не призываем к ним. Бот предназначен для любителей футбола, статистики и спортивной аналитики. Все решения, которые вы принимаете на основе полученной информации, остаются исключительно на вашей ответственности. Доступ к сервису предоставляется лицам от 18 лет.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="container">
+    <h2>Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Что вообще делает этот бот?</summary>
+        <p>Это аналитический Telegram-бот для любителей футбола. Он непрерывно отслеживает live-матчи, анализирует фактуру каждого и присылает уведомление о матчах, в которых статистически вероятен гол в концовке — с цифрами, формой команд и расчётом вероятности.</p>
+      </details>
+      <details>
+        <summary>Это инструмент для ставок?</summary>
+        <p>Нет. Это информационно-аналитический сервис. Мы не букмекер, не партнёр букмекеров, не даём рекомендаций по ставкам. Бот — это инструмент анализа: получаете цифры, дальше решаете сами что с ними делать. Используйте его для интереса к статистике, для слежения за матчами, для углублённого понимания того, как развивается игра.</p>
+      </details>
+      <details>
+        <summary>Кому подойдёт?</summary>
+        <p>Любителям футбола, которые ценят цифры и любят разбираться в фактуре матча. Тем, кто следит за live-играми и хочет видеть структурированную аналитику в одном месте. Спортивным аналитикам, журналистам, телеграм-каналам, статистам, фанатам конкретных лиг.</p>
+      </details>
+      <details>
+        <summary>Откуда берутся данные?</summary>
+        <p>Из официальных спортивных API (API-Football, агрегатор api-sports.io) и собственной накопленной базы исторических наблюдений. Все цифры — фактические показатели, не «прогнозы инсайдеров».</p>
+      </details>
+      <details>
+        <summary>Что значит «вероятность гола»?</summary>
+        <p>Это расчётный показатель на основе анализа похожих исторических ситуаций. Если в нашей базе в 60% похожих по фактуре матчей был гол в концовке, бот покажет ~60%. Это не гарантия и не обещание — это статистический показатель.</p>
+      </details>
+      <details>
+        <summary>Сколько уведомлений в день?</summary>
+        <p>В среднем 5–15 в день в зависимости от количества live-матчей. В будни обычно меньше, в выходные больше (когда играет много туров). Бот не «выжимает» уведомления — если ничего интересного не происходит, ты ничего и не получишь.</p>
+      </details>
+      <details>
+        <summary>Как оплатить?</summary>
+        <p>Открываете бота в Telegram, нажимаете /start — выбираете тариф (месяц 500 ₽ или год 5 000 ₽) и приходит инвойс ЮKassa. Платите картой (Visa, MasterCard, МИР). Доступ открывается автоматически сразу после оплаты.</p>
+      </details>
+      <details>
+        <summary>В чём выгода годового тарифа?</summary>
+        <p>5 000 ₽ за 12 месяцев вместо 6 000 ₽ при ежемесячной оплате — экономия 1 000 ₽ (17%). Плюс не надо думать о продлении весь сезон, а цена фиксируется — даже если месячный тариф вырастет, вы платите по старой.</p>
+      </details>
+      <details>
+        <summary>Что если не понравится?</summary>
+        <p>Возврат возможен в течение 3 дней после оплаты — напишите в поддержку через Telegram-бота. По истечении 3 дней средства не возвращаются (см. <a href="oferta.html" style="color: var(--accent);">оферту</a>).</p>
+      </details>
+      <details>
+        <summary>Как продлить?</summary>
+        <p>За 3 дня до окончания доступа бот пришлёт уведомление и инвойс на продление. Также можно просто заново написать /start в боте и выбрать тариф.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo-line" style="margin-bottom: 14px;">
+          <img src="logo.png" alt="LiveBet Bot logo">
+          <div>LiveBet <span>Bot</span></div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-dim);">Аналитический Telegram-бот для любителей футбола. Анализ хода live-матчей и расчёт вероятности гола в концовке на основе большой статистической базы.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Сервис</h5>
+        <ul>
+          <li><a href="#features">Возможности</a></li>
+          <li><a href="#how">Как работает</a></li>
+          <li><a href="#pricing">Доступ</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Документы</h5>
+        <ul>
+          <li><a href="oferta.html">Договор-оферта</a></li>
+          <li><a href="privacy.html">Политика данных</a></li>
+          <li><a href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Поддержка в боте</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 LiveBet Bot · Все права защищены</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
