@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LiveBet Bot — Telegram-бот аналитики live футбольных матчей</title>
-  <meta name="description" content="Аналитический сервис для любителей футбола и статистики. Бот анализирует ход live-матчей и в реальном времени считает вероятность гола в последние 25 минут.">
-  <meta name="keywords" content="футбольная аналитика, live анализ футбола, статистика футбольных матчей, прогноз голов, футбольный бот, анализ live матчей, телеграм бот футбол">
+  <title>LiveBet Bot — Telegram-аналитика live футбола: голевые рынки</title>
+  <meta name="description" content="Аналитический сервис для любителей футбола и статистики. Бот в реальном времени анализирует live-матчи и присылает сигналы по голевым рынкам (тоталы, обе забьют, индивидуальные тоталы), когда статистика обеих команд сходится сразу по нескольким показателям.">
+  <meta name="keywords" content="футбольная аналитика, live анализ футбола, статистика футбольных матчей, голевые рынки, тоталы, обе забьют, индивидуальные тоталы, футбольный бот, анализ live матчей, телеграм бот футбол">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://livebetbot.ru/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="LiveBet Bot — аналитика live футбола в Telegram">
-  <meta property="og:description" content="Аналитический сервис, который в реальном времени считает вероятность гола в последние 25 минут матча на основе большой базы статистики.">
+  <meta property="og:description" content="Аналитический сервис: сигналы по голевым рынкам live-матчей (тоталы, обе забьют, индивидуальные тоталы), когда несколько показателей сходятся на одном матче.">
   <meta property="og:image" content="https://livebetbot.ru/logo.png">
   <meta property="og:url" content="https://livebetbot.ru/">
   <meta property="og:locale" content="ru_RU">
@@ -23,7 +23,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "LiveBet Bot — доступ к аналитическому сервису",
-    "description": "Аналитический Telegram-бот для любителей футбольной статистики. Анализ хода live-матчей и расчёт вероятности гола в последние 25 минут.",
+    "description": "Аналитический Telegram-бот для любителей футбольной статистики. Анализ live-матчей и сигналы по голевым рынкам: тоталы, обе забьют, индивидуальные тоталы.",
     "image": "https://livebetbot.ru/logo.png",
     "offers": {
       "@type": "AggregateOffer",
@@ -220,7 +220,7 @@
   <section class="hero container">
     <img class="hero-logo" src="logo.png" alt="LiveBet Bot">
     <h1>Аналитика <span class="accent">live футбола</span><br>в реальном времени</h1>
-    <p class="hero-sub">Сервис для любителей футбола и спортивной статистики. Бот в реальном времени анализирует ход live-матчей и рассчитывает вероятность гола в последние 25 минут на основе большой исторической базы.</p>
+    <p class="hero-sub">Сервис для любителей футбола и спортивной статистики. Бот в реальном времени анализирует ход live-матчей и присылает сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам — тоталы, обе забьют, индивидуальные тоталы.</p>
     <a class="hero-cta" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">
       Попробовать 3 дня бесплатно →
     </a>
@@ -234,16 +234,16 @@
         <div class="stat-label">Анализ матчей</div>
       </div>
       <div class="stat">
-        <div class="stat-num">3 мин</div>
+        <div class="stat-num">~2 мин</div>
         <div class="stat-label">Частота обновления</div>
       </div>
       <div class="stat">
-        <div class="stat-num">~100</div>
+        <div class="stat-num">430+</div>
         <div class="stat-label">Лиг в базе</div>
       </div>
       <div class="stat">
-        <div class="stat-num">25+</div>
-        <div class="stat-label">Параметров матча</div>
+        <div class="stat-num">23</div>
+        <div class="stat-label">Голевых рынка</div>
       </div>
     </div>
   </section>
@@ -255,7 +255,7 @@
       <div class="feature">
         <div class="feature-icon">⚙️</div>
         <h3>Live-анализ матчей 24/7</h3>
-        <p>Бот непрерывно отслеживает все live футбольные матчи во всех покрываемых лигах. Каждые 3 минуты пересчитывает показатели и определяет матчи, в которых статистически вероятен гол в концовке.</p>
+        <p>Бот непрерывно отслеживает все live футбольные матчи в покрываемых лигах (430+). Каждые пару минут пересчитывает показатели и находит матчи, где статистика обеих команд сходится сразу по нескольким голевым рынкам.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📊</div>
@@ -264,54 +264,75 @@
       </div>
       <div class="feature">
         <div class="feature-icon">🎯</div>
-        <h3>Вероятность гола</h3>
-        <p>Для каждого выбранного матча бот рассчитывает вероятность того, что гол будет забит в последние 25 минут. Цифра обновляется по мере накопления нашей базы наблюдений.</p>
+        <h3>23 голевых рынка</h3>
+        <p>Тоталы таймов и матча, «обе забьют», индивидуальные тоталы команд, голы в концовке. Сигнал приходит, только когда на одном матче сходятся минимум 2 связанных рынка и каждый показатель ≥ 50%.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📈</div>
-        <h3>Ежедневная сводка</h3>
-        <p>Каждое утро — отчёт за вчера: какие уведомления приходили, по каким матчам прогноз подтвердился, по каким нет. Полная прозрачность результатов работы алгоритма.</p>
+        <h3>Прозрачность результатов</h3>
+        <p>Мы ведём открытый канал, куда по факту матчей выкладываем зашедшие сигналы — видно, как отрабатывает алгоритм, без приукрашивания статистики.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📋</div>
-        <h3>Фактура матча</h3>
-        <p>В каждом уведомлении: текущий счёт, минута, удары, владение, угловые, сейвы, xG, форма обеих команд (последние 5 игр), позиция в таблице, история встреч.</p>
+        <h3>Прозрачная фактура</h3>
+        <p>В каждом сигнале: лига, минута, счёт, форма обеих команд за последние 5 матчей и разбивка по каждому рынку — общая оценка и доли каждой команды за 5 / 10 / 15 матчей сезона.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">💬</div>
-        <h3>Только Telegram</h3>
-        <p>Никаких сложных дашбордов, регистраций, форм. Открыл бота, нажал /start — получаешь анализ. Заглушил бота в Telegram — не получаешь. Всё.</p>
+        <h3>Сигналы в Telegram-группе</h3>
+        <p>Никаких дашбордов и регистраций. Нажал /start в боте — получил доступ в закрытую группу, куда падают все сигналы. Триал и оплата — там же, в боте.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏆</div>
+        <h3>Аналитика ЧМ-2026 — скоро</h3>
+        <p>К чемпионату мира готовим отдельную ветку аналитики матчей сборных — по ходу игры в реальном времени, отдельной темой в группе.</p>
       </div>
     </div>
   </section>
 
   <section id="how" class="container">
     <h2>Как читать сигнал</h2>
-    <p class="lead">Когда история обеих команд показывает высокую вероятность события, в Telegram приходит короткий структурированный сигнал: рынок, общая оценка и разбивка по каждой команде с долями за последние 5 / 10 / 15 матчей сезона. Примеры реальных сигналов:</p>
+    <p class="lead">Сигнал приходит в группу, только когда на одном матче сходятся минимум 2 связанных голевых рынка и каждый показатель ≥ 50%. В сообщении — форма обеих команд и по каждому рынку общая оценка с разбивкой по командам за 5 / 10 / 15 матчей сезона. Примеры:</p>
 
-    <div class="signal-box" style="margin-bottom: 16px;">🏆 Finland. Kakkonen - Lohko A
-⏱ <span class="green">75'</span> | счёт 1:1
-<span class="bold">PEPO — Reipas</span>
+    <div class="signal-box" style="margin-bottom: 16px;">⚡️ <span class="bold">Сигнал</span>
+🏆 Sweden. Superettan
+⏱ <span class="green">75'</span> | счёт 0:0
+<span class="bold">Örgryte — Brage</span>
+📋 Örgryte: ✅ 🔶 ✅ ✅ ❌ (10:6)
+📋 Brage: ✅ ✅ 🔶 ❌ ✅ (9:7)
 
-🎯 <span class="bold">ИТБ1 матч &gt;1.5:</span> <span class="green">68%</span>
-• PEPO забивает: <span class="green">73%</span> (5: 80% / 6: 67%)
-• Reipas пропускает: <span class="green">63%</span> (5: 60% / 6: 67%)</div>
+Сработало рынков: <span class="bold">2</span>
 
-    <div class="signal-box" style="margin-bottom: 16px;">🏆 Finland. Kakkonen - Lohko B
-⏱ <span class="green">76'</span> | счёт 1:0
-<span class="bold">ÅIFK — P-Iirot</span>
+<span class="dim">━━ Матч ━━</span>
 
-🎯 <span class="bold">Тотал матча больше 1.5:</span> <span class="green">91%</span>
-• ÅIFK: <span class="green">100%</span> (5: 100% / 6: 100%)
-• P-Iirot: <span class="green">82%</span> (5: 80% / 6: 83%)</div>
+🎯 <span class="bold">Обе забьют (матч):</span> <span class="green">66%</span>
+• Örgryte: <span class="green">68%</span> (5: 80% / 10: 70% / 15: 67%)
+• Brage: <span class="green">64%</span> (5: 60% / 10: 70% / 15: 64%)
 
-    <div class="signal-box">🏆 Czech-Republic. 3. liga - CFL A
-⏱ <span class="green">30'</span> | счёт 0:2
-<span class="bold">České Budějovice II — Příbram II</span>
+🎯 <span class="bold">Тотал матча больше 1.5:</span> <span class="green">88%</span>
+• Örgryte: <span class="green">93%</span> (5: 100% / 10: 90% / 15: 87%)
+• Brage: <span class="green">83%</span> (5: 80% / 10: 80% / 15: 87%)</div>
 
-🎯 <span class="bold">ИТБ1 1Т &gt;0.5:</span> <span class="green">61%</span>
-• České Budějovice II забивает: <span class="green">76%</span> (5: 100% / 10: 60% / 15: 67%)
-• Příbram II пропускает: <span class="green">46%</span> (5: 40% / 10: 50% / 15: 47%)</div>
+    <div class="signal-box">⚡️ <span class="bold">Сигнал</span>
+🏆 Brazil. Serie B
+⏱ <span class="green">75'</span> | счёт 0:0
+<span class="bold">Goiás — Coritiba</span>
+📋 Goiás: ✅ 🔶 ✅ ❌ ✅ (9:5)
+📋 Coritiba: ✅ ✅ 🔶 ❌ ✅ (8:6)
+
+Сработало рынков: <span class="bold">3</span>
+
+<span class="dim">━━ 2Т ━━</span>
+
+🎯 <span class="bold">Обе забьют во 2-м тайме:</span> <span class="green">62%</span>
+• Goiás: <span class="green">60%</span> (5: 60% / 10: 60% / 15: 60%)
+• Coritiba: <span class="green">64%</span> (5: 80% / 10: 60% / 15: 62%)
+
+<span class="dim">━━ Матч ━━</span>
+
+🎯 <span class="bold">ИТБ1 матч &gt;0.5:</span> <span class="green">74%</span>
+• Goiás <span class="dim">забивает</span>: <span class="green">72%</span> (5: 80% / 10: 70% / 15: 73%)
+• Coritiba <span class="dim">пропускает</span>: <span class="green">76%</span> (5: 80% / 10: 80% / 15: 76%)</div>
 
     <h3 style="margin: 48px 0 16px; font-size: 20px; font-weight: 700;">Принцип работы алгоритма</h3>
     <p class="lead" style="margin-bottom: 28px;">Подробности математики мы не раскрываем — это наш накопленный опыт. Но базовая логика проста:</p>
@@ -325,12 +346,12 @@
         <p>Текущая ситуация сравнивается с тысячами исторических матчей в нашей базе с похожими параметрами и известным итогом.</p>
       </div>
       <div class="step">
-        <h4>Расчёт вероятности</h4>
-        <p>На основе исторических исходов в аналогичных ситуациях алгоритм рассчитывает вероятность гола в оставшееся время.</p>
+        <h4>Расчёт по рынкам</h4>
+        <p>По каждому из 23 голевых рынков алгоритм считает долю матчей обеих команд, где событие случалось, — отдельно за 5, 10 и 15 последних игр сезона.</p>
       </div>
       <div class="step">
-        <h4>Уведомление в Telegram</h4>
-        <p>Если вероятность достаточно высока — приходит уведомление с фактурой матча. Что с этим делать — решаете сами.</p>
+        <h4>Сигнал в группу</h4>
+        <p>Если на матче сошлись ≥ 2 связанных рынка и каждый показатель ≥ 50% — в группу приходит сигнал с фактурой. Что с ним делать — решаете сами.</p>
       </div>
     </div>
   </section>
@@ -348,10 +369,10 @@
         <div class="price-per-month">Стоимость в день: <span class="mono">~17 ₽</span></div>
         <ul class="price-list">
           <li>Все сигналы без лимитов</li>
-          <li>Полная фактура матча</li>
-          <li>Расчётная вероятность гола</li>
-          <li>Ежедневная сводка результатов</li>
-          <li>Оплата картой через ЮKassa</li>
+          <li>Доступ в закрытую Telegram-группу</li>
+          <li>23 голевых рынка + конфлюэнс</li>
+          <li>Форма команд и срезы 5 / 10 / 15</li>
+          <li>Оплата через ЮKassa</li>
         </ul>
         <a class="btn-outline" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Оплатить 500 ₽ →</a>
       </div>
@@ -391,7 +412,7 @@
           <img src="logo.png" alt="LiveBet Bot logo">
           <div>LiveBet <span>Bot</span></div>
         </div>
-        <p style="font-size: 14px; color: var(--text-dim);">Аналитический Telegram-бот для любителей футбола. Анализ хода live-матчей и расчёт вероятности гола в концовке на основе большой статистической базы.</p>
+        <p style="font-size: 14px; color: var(--text-dim);">Аналитический Telegram-бот для любителей футбола. Анализ live-матчей и сигналы по голевым рынкам — тоталы, обе забьют, индивидуальные тоталы — на основе большой статистической базы.</p>
       </div>
       <div class="footer-col">
         <h5>Сервис</h5>
