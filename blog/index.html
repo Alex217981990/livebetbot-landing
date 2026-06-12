@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог LiveBet Bot — футбольная статистика и live-аналитика</title>
+  <meta name="description" content="Статьи о футбольной статистике: поздние голы, голевые рынки, как читать live-показатели матчей, аналитика ЧМ-2026. Фактура из базы 40 000+ матчей и 430+ лиг.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://livebetbot.ru/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Блог LiveBet Bot — футбольная статистика и live-аналитика">
+  <meta property="og:description" content="Поздние голы, голевые рынки, live-показатели матчей, ЧМ-2026 — статьи на фактуре из 40 000+ матчей.">
+  <meta property="og:image" content="https://livebetbot.ru/logo.png">
+  <meta property="og:url" content="https://livebetbot.ru/blog/">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="../logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #04070b; --bg-2: #0a0f17; --border: #1a2332;
+      --text: #e8ecf3; --text-dim: #8b95a8;
+      --accent: #39ff14; --accent-dim: #1fa30a; --accent-glow: rgba(57, 255, 20, 0.15);
+    }
+    html, body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .logo-line { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); }
+    .logo-line img { width: 36px; height: 36px; border-radius: 50%; }
+    .logo-line span { color: var(--accent); }
+    .btn-tg { background: var(--accent); color: #04070b; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+    .btn-tg:hover { filter: brightness(1.1); text-decoration: none; }
+    h1 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin: 48px 0 12px; letter-spacing: -0.02em; }
+    .sub { color: var(--text-dim); margin-bottom: 40px; }
+    .card { display: block; background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 20px; transition: border-color 0.2s; color: var(--text); }
+    .card:hover { border-color: var(--accent-dim); text-decoration: none; }
+    .card .tag { color: var(--accent); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .card h2 { font-size: 22px; margin: 10px 0; }
+    .card p { color: var(--text-dim); font-size: 15px; }
+    footer { border-top: 1px solid var(--border); margin-top: 80px; padding: 32px 0; color: var(--text-dim); font-size: 14px; text-align: center; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo-line" href="../"><img src="../logo.png" alt="LiveBet Bot logo"><div>LiveBet <span>Bot</span></div></a>
+    <a class="btn-tg" href="https://t.me/livebetfootball_bot?start=blog" target="_blank" rel="noopener">Открыть в Telegram</a>
+  </div>
+</header>
+<main class="container">
+  <h1>Блог о футбольной статистике</h1>
+  <p class="sub">Разборы голевых рынков, статистика по 40 000+ матчей из 430+ лиг и заметки о том, как читать live-показатели футбольных матчей.</p>
+
+  <a class="card" href="chm-2026-live-statistika.html">
+    <span class="tag">ЧМ-2026</span>
+    <h2>ЧМ-2026: как читать live-статистику матчей — удары, xG и давление</h2>
+    <p>Чемпионат мира — 2026 идёт прямо сейчас. Объясняем, какие live-показатели реально говорят о приближающемся голе и как мы анализируем матчи сборных в реальном времени.</p>
+  </a>
+
+  <a class="card" href="pozdnie-goly-statistika.html">
+    <span class="tag">Статистика</span>
+    <h2>Поздние голы в футболе: на каких минутах забивают чаще всего</h2>
+    <p>Почему концовка матча — самый голевой отрезок, у каких команд голы после 80-й минуты случаются регулярно и как это измерять корректно. Фактура из базы 40 000+ матчей.</p>
+  </a>
+</main>
+<footer>
+  <div class="container">© 2026 LiveBet Bot · <a href="../">Главная</a> · <a href="../oferta.html">Оферта</a> · <a href="../privacy.html">Политика данных</a></div>
+</footer>
+</body>
+</html>

@@ -52,6 +52,52 @@
   }
   </script>
 
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Что такое LiveBet Bot и что он присылает?",
+        "acceptedAnswer": {"@type": "Answer", "text": "LiveBet Bot — аналитический Telegram-сервис по live-футболу. Бот круглосуточно отслеживает матчи в 430+ лигах и присылает в закрытую группу сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам (минимум 2 рынка, каждый показатель ≥ 50%)."}
+      },
+      {
+        "@type": "Question",
+        "name": "Это прогнозы на ставки?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Нет. LiveBet Bot — информационно-аналитический сервис: статистическая фактура по матчу в реальном времени, без рекомендаций по ставкам. Сервис не является букмекером и не связан с организацией азартных игр."}
+      },
+      {
+        "@type": "Question",
+        "name": "Как работает бесплатный доступ на 3 дня?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Откройте бота и нажмите /start — новым пользователям автоматически выдаётся 3 дня полного доступа без карты и оплаты. После триала доступ продлевается: 500 ₽ за 30 дней или 5 000 ₽ за год. Автопродления нет."}
+      },
+      {
+        "@type": "Question",
+        "name": "Какие лиги и рынки покрывает бот?",
+        "acceptedAnswer": {"@type": "Answer", "text": "430+ лиг по всему миру и 23 голевых рынка: тоталы таймов и матча, «обе забьют», индивидуальные тоталы, голы в концовках. Плюс отдельная live-аналитика матчей ЧМ-2026 по ударам и xG."}
+      },
+      {
+        "@type": "Question",
+        "name": "Где видно, как отрабатывают сигналы?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Каждый вечер в открытом Telegram-канале публикуются «Итоги дня»: все сигналы дня со счётом и пометкой, какие рынки сработали — без приукрашивания."}
+      },
+      {
+        "@type": "Question",
+        "name": "Как оплатить и есть ли автопродление?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Оплата в Telegram через ЮKassa (СБП, SberPay). Автопродления нет — оплаченный срок заканчивается, продление вручную."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Верификация поисковиков: вставить коды после регистрации сайта
+       (инструкция: NB_BET_BOT_TRAFFIC/seo/setup-instructions.md)
+  <meta name="yandex-verification" content="XXXXXXXXXXXXXXXX">
+  <meta name="google-site-verification" content="XXXXXXXXXXXXXXXX">
+  -->
+
   <link rel="icon" href="logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -210,8 +256,10 @@
       <a href="#features">Возможности</a>
       <a href="#how">Как работает</a>
       <a href="#pricing">Доступ</a>
+      <a href="#faq">FAQ</a>
+      <a href="blog/">Блог</a>
     </nav>
-    <a class="btn-tg" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Открыть в Telegram</a>
+    <a class="btn-tg" href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">Открыть в Telegram</a>
   </div>
 </header>
 
@@ -221,7 +269,7 @@
     <img class="hero-logo" src="logo.png" alt="LiveBet Bot">
     <h1>Аналитика <span class="accent">live футбола</span><br>в реальном времени</h1>
     <p class="hero-sub">Сервис для любителей футбола и спортивной статистики. Бот в реальном времени анализирует ход live-матчей и присылает сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам — тоталы, обе забьют, индивидуальные тоталы.</p>
-    <a class="hero-cta" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">
+    <a class="hero-cta" href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">
       Попробовать 3 дня бесплатно →
     </a>
     <p class="hero-meta">🎁 Новым — <span class="mono">3 дня бесплатно</span>, без карты · далее от <span class="mono">500 ₽ / 30 дней</span></p>
@@ -284,8 +332,8 @@
       </div>
       <div class="feature">
         <div class="feature-icon">🏆</div>
-        <h3>Аналитика ЧМ-2026 — скоро</h3>
-        <p>К чемпионату мира готовим отдельную ветку аналитики матчей сборных — по ходу игры в реальном времени, отдельной темой в группе.</p>
+        <h3>Аналитика ЧМ-2026 — уже идёт</h3>
+        <p>Чемпионат мира в разгаре: по матчам сборных работает отдельная live-аналитика — давление по ударам, ударам в створ и xG в реальном времени, прогнозы голов по ходу игры. Отдельная тема в группе.</p>
       </div>
     </div>
   </section>
@@ -374,7 +422,7 @@
           <li>Форма команд и срезы 5 / 10 / 15</li>
           <li>Оплата через ЮKassa</li>
         </ul>
-        <a class="btn-outline" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Оплатить 500 ₽ →</a>
+        <a class="btn-outline" href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">Оплатить 500 ₽ →</a>
       </div>
 
       <div class="price-card featured">
@@ -390,9 +438,39 @@
           <li>Фиксация цены — даже если она вырастет</li>
           <li>Приоритетная поддержка</li>
         </ul>
-        <a class="btn-primary" href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Оплатить 5 000 ₽ →</a>
+        <a class="btn-primary" href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">Оплатить 5 000 ₽ →</a>
       </div>
 
+    </div>
+  </section>
+
+  <section id="faq" class="container">
+    <h2>Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Что такое LiveBet Bot и что он присылает?</summary>
+        <p>LiveBet Bot — аналитический Telegram-сервис по live-футболу. Бот круглосуточно отслеживает матчи в 430+ лигах и присылает в закрытую группу сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам (минимум 2 рынка, каждый показатель ≥ 50%). В сигнале — лига, минута, счёт, форма команд за 5 последних матчей и разбивка каждого рынка по срезам 5 / 10 / 15 игр сезона.</p>
+      </details>
+      <details>
+        <summary>Это прогнозы на ставки?</summary>
+        <p>Нет. LiveBet Bot — информационно-аналитический сервис: мы показываем статистическую фактуру по матчу в реальном времени и не даём рекомендаций по ставкам. Сервис не является букмекером и не связан с организацией азартных игр. Как использовать аналитику — решаете только вы.</p>
+      </details>
+      <details>
+        <summary>Как работает бесплатный доступ на 3 дня?</summary>
+        <p>Откройте бота и нажмите /start — новым пользователям автоматически выдаётся 3 дня полного доступа: все сигналы и закрытая группа. Карта не нужна, оплата не требуется, автопродления нет. После окончания триала доступ можно продлить: 500 ₽ за 30 дней или 5 000 ₽ за год.</p>
+      </details>
+      <details>
+        <summary>Какие лиги и рынки покрывает бот?</summary>
+        <p>В базе 430+ лиг — от топ-чемпионатов до низших дивизионов по всему миру. Рынков 23: тоталы таймов и матча (0.5–3.5), «обе забьют» (1-й тайм / 2-й тайм / матч), индивидуальные тоталы команд, голы в концовках таймов. Плюс отдельная live-аналитика матчей ЧМ-2026 по ударам, ударам в створ и xG.</p>
+      </details>
+      <details>
+        <summary>Где видно, как отрабатывают сигналы?</summary>
+        <p>Каждый вечер в открытом Telegram-канале публикуются «Итоги дня»: список сигналов за день со счётом и пометкой, какие рынки сработали, а какие нет — без приукрашивания. Можно оценить работу алгоритма до оформления доступа.</p>
+      </details>
+      <details>
+        <summary>Как оплатить и есть ли автопродление?</summary>
+        <p>Оплата проходит прямо в Telegram через ЮKassa (СБП, SberPay). Автопродления нет: оплатили — пользуетесь оплаченный срок, дальше продлеваете вручную, когда удобно. Чек формируется автоматически.</p>
+      </details>
     </div>
   </section>
 
@@ -420,6 +498,7 @@
           <li><a href="#features">Возможности</a></li>
           <li><a href="#how">Как работает</a></li>
           <li><a href="#pricing">Доступ</a></li>
+          <li><a href="blog/">Блог</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -427,7 +506,7 @@
         <ul>
           <li><a href="oferta.html">Договор-оферта</a></li>
           <li><a href="privacy.html">Политика данных</a></li>
-          <li><a href="https://t.me/livebetfootball_bot" target="_blank" rel="noopener">Поддержка в боте</a></li>
+          <li><a href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">Поддержка в боте</a></li>
         </ul>
       </div>
     </div>
@@ -436,6 +515,19 @@
     </div>
   </div>
 </footer>
+
+<!-- Яндекс.Метрика: создать счётчик на metrika.yandex.ru, заменить XXXXXXXX на номер
+     счётчика и раскомментировать (инструкция: NB_BET_BOT_TRAFFIC/seo/setup-instructions.md)
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+   ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+-->
 
 </body>
 </html>
