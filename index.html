@@ -61,7 +61,7 @@
       {
         "@type": "Question",
         "name": "Что такое LiveBet Bot и что он присылает?",
-        "acceptedAnswer": {"@type": "Answer", "text": "LiveBet Bot — аналитический Telegram-сервис по live-футболу. Бот круглосуточно отслеживает матчи в 430+ лигах и присылает в закрытую группу сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам (минимум 2 рынка, каждый показатель ≥ 50%)."}
+        "acceptedAnswer": {"@type": "Answer", "text": "LiveBet Bot — аналитический Telegram-сервис по live-футболу. Бот круглосуточно следит за матчами в 430+ лигах и присылает в закрытую группу сигнал, когда в матче назревает гол."}
       },
       {
         "@type": "Question",
@@ -76,7 +76,7 @@
       {
         "@type": "Question",
         "name": "Какие лиги и рынки покрывает бот?",
-        "acceptedAnswer": {"@type": "Answer", "text": "430+ лиг по всему миру и 23 голевых рынка: тоталы таймов и матча, «обе забьют», индивидуальные тоталы, голы в концовках. Плюс отдельная live-аналитика матчей ЧМ-2026 по ударам и xG."}
+        "acceptedAnswer": {"@type": "Answer", "text": "430+ лиг по всему миру и 16 голевых рынков: тоталы, «обе забьют», индивидуальные тоталы, гол в концовке матча. Плюс отдельная live-аналитика матчей ЧМ-2026 по ударам и xG."}
       },
       {
         "@type": "Question",
@@ -156,6 +156,8 @@
     .hero-sub { font-size: clamp(15px, 2vw, 19px); color: var(--text-dim); max-width: 660px; margin: 0 auto 36px; }
     .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #04070b; padding: 16px 32px; border-radius: 10px; font-weight: 700; font-size: 17px; box-shadow: 0 0 40px var(--accent-glow); transition: transform 0.15s, box-shadow 0.15s; }
     .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 60px var(--accent-glow); text-decoration: none; }
+    .hero-cta-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent-dim); box-shadow: none; }
+    .hero-cta-outline:hover { background: var(--accent-glow); box-shadow: none; }
     .hero-meta { margin-top: 20px; color: var(--text-dim); font-size: 14px; }
     .hero-meta .mono { color: var(--accent); }
 
@@ -265,10 +267,15 @@
   <section class="hero container">
     <img class="hero-logo" src="logo.png" alt="LiveBet Bot">
     <h1>Аналитика <span class="accent">live футбола</span><br>в реальном времени</h1>
-    <p class="hero-sub">Сервис для любителей футбола и спортивной статистики. Бот в реальном времени анализирует ход live-матчей и присылает сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам — тоталы, обе забьют, индивидуальные тоталы.</p>
-    <a class="hero-cta" href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">
-      Попробовать 3 дня бесплатно →
-    </a>
+    <p class="hero-sub">Бот следит за live-матчами по всему миру и присылает сигнал, когда в матче назревает гол. Фокус — концовка матча: там забивают чаще всего.</p>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a class="hero-cta" href="https://t.me/livebetfootball_bot?start=site" target="_blank" rel="noopener">
+        Попробовать 3 дня бесплатно →
+      </a>
+      <a class="hero-cta hero-cta-outline" href="https://t.me/Football_LiveBet_Bot" target="_blank" rel="noopener">
+        📢 Вступить бесплатно — открытый канал
+      </a>
+    </div>
     <p class="hero-meta">🎁 Новым — <span class="mono">3 дня бесплатно</span>, без карты · далее от <span class="mono">500 ₽ / 30 дней</span></p>
   </section>
 
@@ -287,8 +294,8 @@
         <div class="stat-label">Лиг в базе</div>
       </div>
       <div class="stat">
-        <div class="stat-num">23</div>
-        <div class="stat-label">Голевых рынка</div>
+        <div class="stat-num">16</div>
+        <div class="stat-label">Голевых рынков</div>
       </div>
     </div>
   </section>
@@ -300,7 +307,7 @@
       <div class="feature">
         <div class="feature-icon">⚙️</div>
         <h3>Live-анализ матчей 24/7</h3>
-        <p>Бот непрерывно отслеживает все live футбольные матчи в покрываемых лигах (430+). Каждые пару минут пересчитывает показатели и находит матчи, где статистика обеих команд сходится сразу по нескольким голевым рынкам.</p>
+        <p>Бот непрерывно отслеживает все live футбольные матчи в покрываемых лигах (430+). Каждые пару минут пересчитывает показатели и находит матчи, где назревает гол.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📊</div>
@@ -309,13 +316,18 @@
       </div>
       <div class="feature">
         <div class="feature-icon">🎯</div>
-        <h3>23 голевых рынка</h3>
-        <p>Тоталы таймов и матча, «обе забьют», индивидуальные тоталы команд, голы в концовке. Сигнал приходит, только когда на одном матче сходятся минимум 2 связанных рынка и каждый показатель ≥ 50%.</p>
+        <h3>16 голевых рынков</h3>
+        <p>Тоталы, «обе забьют», индивидуальные тоталы, гол в концовке. Сигнал приходит только по матчам, где на гол указывает сразу несколько рынков.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🧠</div>
+        <h3>Обучаемая ИИ-модель</h3>
+        <p>Поверх статистики работает специальная модель искусственного интеллекта: она дообучается на каждом сыгранном матче и постоянно улучшает точность прогнозов. Детали архитектуры не раскрываем — это наше преимущество.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📈</div>
         <h3>Прозрачность результатов</h3>
-        <p>Мы ведём открытый канал, куда по факту матчей выкладываем зашедшие сигналы — видно, как отрабатывает алгоритм, без приукрашивания статистики.</p>
+        <p>Мы ведём <a href="https://t.me/Football_LiveBet_Bot" target="_blank" rel="noopener">открытый канал</a> — вступление бесплатное. Туда по факту матчей выкладываем итоги сигналов — видно, как отрабатывает алгоритм, без приукрашивания статистики.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📋</div>
@@ -337,9 +349,9 @@
 
   <section id="how" class="container">
     <h2>Как читать сигнал</h2>
-    <p class="lead">Сигнал приходит в группу, только когда на одном матче сходятся минимум 2 связанных голевых рынка и каждый показатель ≥ 50%. В сообщении — форма обеих команд за последние 5 матчей и по каждому рынку общая оценка с долей каждой команды. Примеры:</p>
+    <p class="lead">В сигнале всё по делу: лига, минута, счёт, форма команд и проценты по рынкам. Пример:</p>
 
-    <div class="signal-box" style="margin-bottom: 16px;">⚡️ <span class="bold">Сигнал</span>
+    <div class="signal-box">⚡️ <span class="bold">Сигнал</span>
 🏆 Australia. Northern NSW NPL
 ⏱ <span class="green">75'</span> | счёт 1:1
 <span class="bold">Edgeworth Eagles — Lambton Jaffas</span>
@@ -354,21 +366,11 @@
 🎯 <span class="bold">Тотал матча больше 2.5</span> — <span class="green">74%</span>
    ┗ Edgeworth Eagles: <span class="green">80%</span> · Lambton Jaffas: <span class="green">68%</span></div>
 
-    <div class="signal-box">⚡️ <span class="bold">Сигнал</span>
-🏆 Georgia. Erovnuli Liga
-⏱ <span class="green">30'</span> | счёт 0:1
-<span class="bold">Dinamo Tbilisi — Dinamo Batumi</span>
-📋 Dinamo Tbilisi: ✅ ❌ ✅ ❌ 🔶 (12:7)
-📋 Dinamo Batumi: ✅ ✅ ❌ ✅ 🔶 (10:8)
+    <h3 style="margin: 48px 0 16px; font-size: 20px; font-weight: 700;">Наша стратегия — концовка матча</h3>
+    <p class="lead" style="margin-bottom: 28px;">Больше всего голов забивают в конце игры: оборона устала, счёт раскрыт, команды дожимают. Мы ловим именно эти голы.</p>
 
-📊 <span class="bold">Рынки:</span>
-🎯 <span class="bold">1Т тотал больше 1.5</span> — <span class="green">59%</span>
-   ┗ Dinamo Tbilisi: <span class="green">66%</span> · Dinamo Batumi: <span class="green">52%</span>
-🎯 <span class="bold">Гол в концовке 1-го тайма (30-45')</span> — <span class="green">61%</span>
-   ┗ Dinamo Tbilisi: <span class="green">59%</span> · Dinamo Batumi: <span class="green">63%</span></div>
-
-    <h3 style="margin: 48px 0 16px; font-size: 20px; font-weight: 700;">Принцип работы алгоритма</h3>
-    <p class="lead" style="margin-bottom: 28px;">Подробности математики мы не раскрываем — это наш накопленный опыт. Но базовая логика проста:</p>
+    <h3 style="margin: 48px 0 16px; font-size: 20px; font-weight: 700;">Как это работает</h3>
+    <p class="lead" style="margin-bottom: 28px;">Бот сравнивает текущий матч с тысячами сыгранных, а специальная ИИ-модель учится на каждом новом матче — прогнозы становятся точнее сами. Всю кухню не раскрываем.</p>
     <div class="steps">
       <div class="step">
         <h4>Сбор данных в реальном времени</h4>
@@ -380,11 +382,11 @@
       </div>
       <div class="step">
         <h4>Расчёт по рынкам</h4>
-        <p>По каждому из 23 голевых рынков алгоритм считает долю матчей обеих команд, где событие случалось, — отдельно за 5, 10 и 15 последних игр сезона.</p>
+        <p>По каждому из 16 голевых рынков алгоритм считает долю матчей обеих команд, где событие случалось, — отдельно за 5, 10 и 15 последних игр сезона.</p>
       </div>
       <div class="step">
         <h4>Сигнал в группу</h4>
-        <p>Если на матче сошлись ≥ 2 связанных рынка и каждый показатель ≥ 50% — в группу приходит сигнал с фактурой. Что с ним делать — решаете сами.</p>
+        <p>Если несколько рынков указывают на гол — в группу приходит сигнал. Что с ним делать — решаете сами.</p>
       </div>
     </div>
   </section>
@@ -403,7 +405,7 @@
         <ul class="price-list">
           <li>Все сигналы без лимитов</li>
           <li>Доступ в закрытую Telegram-группу</li>
-          <li>23 голевых рынка, сигнал при схождении 2+</li>
+          <li>16 голевых рынков</li>
           <li>Форма команд и доля по каждому рынку</li>
           <li>Оплата через ЮKassa</li>
         </ul>
@@ -434,7 +436,7 @@
     <div class="faq">
       <details>
         <summary>Что такое LiveBet Bot и что он присылает?</summary>
-        <p>LiveBet Bot — аналитический Telegram-сервис по live-футболу. Бот круглосуточно отслеживает матчи в 430+ лигах и присылает в закрытую группу сигнал, когда статистика обеих команд сходится сразу по нескольким голевым рынкам (минимум 2 рынка, каждый показатель ≥ 50%). В сигнале — лига, минута, счёт, форма команд за 5 последних матчей и доля каждой команды по каждому рынку.</p>
+        <p>LiveBet Bot — аналитический Telegram-сервис по live-футболу. Бот круглосуточно следит за матчами в 430+ лигах и присылает в закрытую группу сигнал, когда в матче назревает гол. В сигнале — лига, минута, счёт, форма команд и проценты по рынкам.</p>
       </details>
       <details>
         <summary>Это прогнозы на ставки?</summary>
@@ -446,11 +448,11 @@
       </details>
       <details>
         <summary>Какие лиги и рынки покрывает бот?</summary>
-        <p>В базе 430+ лиг — от топ-чемпионатов до низших дивизионов по всему миру. Рынков 23: тоталы таймов и матча (0.5–3.5), «обе забьют» (1-й тайм / 2-й тайм / матч), индивидуальные тоталы команд, голы в концовках таймов. Плюс отдельная live-аналитика матчей ЧМ-2026 по ударам, ударам в створ и xG.</p>
+        <p>В базе 430+ лиг — от топ-чемпионатов до низших дивизионов по всему миру. Рынков 16: тоталы, «обе забьют», индивидуальные тоталы команд, гол в концовке матча. Плюс отдельная live-аналитика матчей ЧМ-2026 по ударам, ударам в створ и xG.</p>
       </details>
       <details>
         <summary>Где видно, как отрабатывают сигналы?</summary>
-        <p>Каждый вечер в открытом Telegram-канале публикуются «Итоги дня»: список сигналов за день со счётом и пометкой, какие рынки сработали, а какие нет — без приукрашивания. Можно оценить работу алгоритма до оформления доступа.</p>
+        <p>Каждый вечер в <a href="https://t.me/Football_LiveBet_Bot" target="_blank" rel="noopener">открытом Telegram-канале</a> публикуются «Итоги дня»: все сигналы за день со счётом — что зашло, что нет, без приукрашивания. Вступление бесплатное — можно сначала посмотреть, как работает, потом решать.</p>
       </details>
       <details>
         <summary>Как оплатить и есть ли автопродление?</summary>
@@ -475,7 +477,7 @@
           <img src="logo.png" alt="LiveBet Bot logo">
           <div>LiveBet <span>Bot</span></div>
         </div>
-        <p style="font-size: 14px; color: var(--text-dim);">Аналитический Telegram-бот для любителей футбола. Анализ live-матчей и сигналы по голевым рынкам — тоталы, обе забьют, индивидуальные тоталы — на основе большой статистической базы.</p>
+        <p style="font-size: 14px; color: var(--text-dim);">Аналитический Telegram-бот для любителей футбола. Анализ live-матчей и сигналы на голы в концовке — на основе большой статистической базы и обучаемой ИИ-модели.</p>
       </div>
       <div class="footer-col">
         <h5>Сервис</h5>
@@ -483,6 +485,7 @@
           <li><a href="#features">Возможности</a></li>
           <li><a href="#how">Как работает</a></li>
           <li><a href="#pricing">Доступ</a></li>
+          <li><a href="https://t.me/Football_LiveBet_Bot" target="_blank" rel="noopener">Открытый канал — бесплатно</a></li>
           <li><a href="blog/">Блог</a></li>
         </ul>
       </div>
